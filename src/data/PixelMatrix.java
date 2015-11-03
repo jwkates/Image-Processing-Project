@@ -1,12 +1,5 @@
 package data;
 
-/**
- * Created with IntelliJ IDEA.
- * User: jkates
- * Date: 10/14/15
- * Time: 2:30 PM
- * To change this template use File | Settings | File Templates.
- */
 public class PixelMatrix {
 
     private Pixel[][] pixels;
@@ -100,8 +93,10 @@ public class PixelMatrix {
             // Reflect to top edge
             return getPixel(x, 0);
         } else if (y >= getHeight()) {
+            // Reflect to bottom edge
             return getPixel(x, getHeight() - 1);
         } else {
+            // The default pixel is the zero pixel, but it wont't be used.
             return Pixel.zeroPixel();
         }
 
