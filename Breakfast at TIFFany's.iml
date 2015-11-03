@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/documents-export-2015-10-13/jai_codec.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jai_codec.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,7 +19,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/documents-export-2015-10-13/jai_core.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jai_core.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
