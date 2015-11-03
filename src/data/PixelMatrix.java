@@ -29,26 +29,37 @@ public class PixelMatrix {
         }
     }
 
+    private LinkedList<Pixel> getNeighbors(int x, int y) {
+        LinkedList<Pixel> neighborList = new LinkedList<>();
+
+        for (int i = x - 1; i < x + 2; i++) {
+            for (int j = y - 1; j < y + 2; j++) {
+                if (i >= 0 && i < getWidth() && j >= 0 && j < getHeight()) {
+                    neighborList.add(getPixel(i, j));
+                }
+            }
+        }
+
+        return neighborList;
+    }
+
     public Pixel neighborhoodAverage(int x, int y) {
-        // Sum of neighbors in each color
+        LinkedList<Pixel> neighbors = getNeighbors(x, y);
+
+        int numNeighbors = neighbors.getLength();
+
         int redSum = 0;
         int greenSum = 0;
         int blueSum = 0;
 
-        for (int i = x - 1; i < x + 2; i++) {
-            for (int j = y - 1; j < y + 2; j++) {
-                Pixel pixel = getPixel(i, j);
-
-                redSum += pixel.getRed();
-                greenSum += pixel.getGreen();
-                blueSum += pixel.getBlue();
-            }
+        for (Pixel neighbor : neighbors) {
+            redSum += neighbor.getRed();
+            greenSum += neighbor.getGreen();
+            blueSum += neighbor.getBlue();
         }
 
-        // Average pixel has the total values divided by the # of neighbors as its components
-        int neighbors = numberOfNeighbors(x, y);
+        return new Pixel(redSum / numNeighbors, greenSum / numNeighbors, blueSum / numNeighbors);
 
-        return new Pixel(redSum / neighbors, greenSum / neighbors, blueSum / neighbors);
     }
 
     public Pixel convolve(int x, int y, short[][] kernel) {
@@ -100,28 +111,6 @@ public class PixelMatrix {
             return Pixel.zeroPixel();
         }
 
-    }
-
-    private int numberOfNeighbors(int x, int y) {
-        if (x > 0 && x < getWidth() - 1 && y > 0 && y < getHeight() - 1) {
-            // Interior pixel
-            return 9;
-        } else if (x == 0 && y == 0) {
-            // Top left corner
-            return 4;
-        } else if (x == getWidth() - 1 && y == 0) {
-            // Top right corner
-            return 4;
-        } else if (x == 0 && y == getHeight() - 1) {
-            // Bottom left corner
-            return 4;
-        } else if (x == getWidth() - 1 && y == getHeight() - 1) {
-            // Bottom right corner
-            return 4;
-        } else {
-            // Other pixels are on edge but not corner
-            return 6;
-        }
     }
 
     public void setPixel(int x, int y, short red, short green, short blue) {

@@ -368,6 +368,10 @@ public class PixImg {
      * and Sobel) are correct.
      */
     public static void main(String[] args) {
+
+        PixImg image = ImgUtils.readTIFFPix("flower.tiff");
+        PixImg blurredImage = image.boxBlur(500);
+        ImgUtils.displayTIFF(blurredImage);
         // Be forwarned that when you write arrays directly in Java as below,
         // each "row" of text is a column of your image--the numbers get
         // transposed.
