@@ -3,7 +3,7 @@ package data;
 import data.Pixel;
 
 /**
- * Created by jackkates on 10/15/15.
+ * Created by Jack Kates on 10/15/15.
  */
 public class Run {
 
