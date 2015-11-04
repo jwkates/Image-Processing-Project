@@ -28,7 +28,6 @@
 
 import data.*;
 
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class RunIterator extends LinkedListIterator {

@@ -2,8 +2,6 @@
 
 package data;
 
-import java.util.Iterator;
-
 /**
  * A DList2 is a mutable doubly-linked list.  Its implementation is
  * circularly-linked and employs a sentinel (dummy) node at the head
